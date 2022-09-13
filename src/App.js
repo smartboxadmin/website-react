@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState, useEffect } from "react";
+import Footer from "./components/Footer";
+import Home from "./components/Home";
+import Feature from "./components/Feature";
+import Navbar from "./components/Navbar";
+import "./sass/index.scss";
 function App() {
+  const [theme, setTheme] = useState("light");
+  const changeTheme = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div data-theme={theme} className="app-container">
+      <Navbar changeTheme={changeTheme} currentTheme={theme} />
+      <Home />
+      <Feature />
+      <Footer />
     </div>
   );
 }
